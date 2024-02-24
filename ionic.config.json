@@ -1,0 +1,7 @@
+{
+  "name": "gymApp220",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
