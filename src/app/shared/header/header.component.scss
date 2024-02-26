@@ -1,0 +1,68 @@
+.container {
+  background-color: var(--lightgrey);
+  height: 25vh;
+  border-radius: 0 0 48px 48px;
+}
+
+ion-toolbar {
+  --ion-background-color: var(--lightgrey);
+  color: white;
+  --padding-top: 16px;
+  padding: 8px;
+}
+
+ion-menu-button {
+  font-size: 50px !important;
+}
+
+.logo {
+  margin-right: 48px;
+  height: 40px;
+}
+
+.btn-notifications {
+  --background: var(--dark);
+  --color: var(--orange);
+  margin: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.btn-notifications ion-icon {
+  height: 16px;
+}
+
+.user {
+  margin: 8px 40px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.user .label {
+  margin-left: 16px;
+  font-family: 'Oswald';
+}
+
+.user .name {
+  color: var(--white);
+}
+
+.user .level {
+  color: var(--purple);
+}
+
+.navbar {
+  margin: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .chip {
+  --background: var(--grey);
+  color: var(--orange);
+  width: 70vw;
+  font-family: 'Oswald';
+  font-weight: 200;
+}

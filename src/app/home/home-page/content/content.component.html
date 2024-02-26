@@ -1,0 +1,23 @@
+<div class="container">
+  <app-content-section [cards]="personal">
+    <div sectionTitle>
+      PERSONAL ONLINE
+      <ion-fab vertical="bottom">
+        <ion-fab-button class="btn-add">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  </app-content-section>
+  <app-content-section [cards]="programs">
+    <div sectionTitle>
+      PROGRAMAS
+      <ion-badge>NOVO</ion-badge>
+    </div>
+  </app-content-section>
+  <app-content-section [cards]="contents">
+    <div sectionTitle>
+      CONTEÚDOS
+    </div>
+  </app-content-section>
+</div>

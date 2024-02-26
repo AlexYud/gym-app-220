@@ -1,0 +1,34 @@
+.container {
+  font-family: 'Oswald';
+  color: var(--white);
+}
+
+ion-fab {
+  margin-left: 16px;
+  bottom: 5px;
+}
+
+.btn-add {
+  --border-color: var(--orange);
+  --color: var(--orange);
+  --border-width: 1px;
+  --border-style: solid;
+  --background: var(--dark);
+  width: 24px;
+  height: 24px;
+}
+
+.btn-add ion-icon {
+  height: 16px;
+}
+
+ion-badge {
+  border-radius: 24px;
+  font-family: 'Oswald';
+  font-size: 8px;
+  font-weight: 300;
+  position: absolute;
+  top: 8px;
+  margin-left: 8px;
+  background-color: var(--orange);
+}
