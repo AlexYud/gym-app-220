@@ -1,18 +1,17 @@
 <div class="container">
-  <ion-title>
+  <ion-title [style.color]="(isDisabled) ? 'var(--lightgrey)': ''">
     <ng-content select=[sectionTitle]></ng-content>
   </ion-title>
-  @if (cards.length === 0) {
-    <div class="no-cards">
-      No cards found...
-    </div>
-  } @else {
-    <swiper-container space-between="15" slides-per-view="auto" [slidesOffsetBefore]="30" >
-      @for (card of cards; track $index) {
-        <swiper-slide>
-          <app-card [card]="card"></app-card>
-        </swiper-slide>
-      }
-    </swiper-container>
-  }
+  <swiper-container space-between="15" slides-per-view="auto" [slidesOffsetBefore]="30" [enabled]="!isDisabled">
+    @for (card of specialCards; track $index) {
+      <swiper-slide>
+        <app-card [card]="card" [isSpecial]="true"></app-card>
+      </swiper-slide>
+    }
+    @for (card of cards; track $index) {
+      <swiper-slide>
+        <app-card [card]="card" [isDisabled]="isDisabled"></app-card>
+      </swiper-slide>
+    }
+  </swiper-container>
 </div>

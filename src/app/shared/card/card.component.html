@@ -1,5 +1,16 @@
-<ion-card [style.border]="(card.isDisabled) ? 'solid 1px var(--lightgrey)': ''" (click)="onClick(card)">
-  <ion-ripple-effect></ion-ripple-effect>
+<ion-card 
+  [style.border]="isDisabled ? 'solid 1px var(--lightgrey)': ''" 
+  [style.display]="isSpecial ? 'flex' : ''"
+  [style.justify-content]="isSpecial ? 'center' : ''"
+  [style.align-items]="isSpecial ? 'center' : ''"
+  (click)="onClick(card)"
+  >
+  @if (isSpecial) {
+    <div class="container">
+      <app-fab iconName="add" iconWidth="24px" width="40px" height="40px"></app-fab>
+      <ion-label>NOVO TREINO</ion-label>
+    </div>
+  }
   <img [alt]="card ? card.imageAlt : ''" [src]="card ? card.imageURL : 'https://ionicframework.com/docs/img/demos/card-media.png'" />
   <ion-card-header>
     <ion-card-subtitle>{{ card ? card.subtitle : '' }}</ion-card-subtitle>

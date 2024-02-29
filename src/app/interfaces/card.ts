@@ -4,5 +4,4 @@ export interface Card {
   subtitle: string,
   imageURL: string,
   imageAlt: string,
-  isDisabled: boolean,
 }

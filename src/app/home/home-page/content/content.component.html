@@ -1,12 +1,8 @@
 <div class="container">
-  <app-content-section [cards]="personal">
-    <div sectionTitle>
+  <app-content-section [specialCards]="specialCards" [cards]="personal">
+    <div class="title-container" sectionTitle>
       PERSONAL ONLINE
-      <ion-fab vertical="bottom">
-        <ion-fab-button class="btn-add">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+      <app-fab iconName="add" iconWidth="12px" width="24px" height="24px"></app-fab>
     </div>
   </app-content-section>
   <app-content-section [cards]="programs">
@@ -15,7 +11,7 @@
       <ion-badge>NOVO</ion-badge>
     </div>
   </app-content-section>
-  <app-content-section [cards]="contents">
+  <app-content-section [cards]="contents" [isDisabled]="true">
     <div sectionTitle>
       CONTEÚDOS
     </div>

@@ -37,19 +37,19 @@ ion-menu-button {
   display: flex;
   justify-content: start;
   align-items: center;
-}
 
-.user .label {
-  margin-left: 16px;
-  font-family: 'Oswald';
-}
+  .label {
+    margin-left: 16px;
+    font-family: 'Oswald';
+  }
 
-.user .name {
-  color: var(--white);
-}
+  .name {
+    color: var(--white);
+  }
 
-.user .level {
-  color: var(--purple);
+  .level {
+    color: var(--purple);
+  }
 }
 
 .navbar {
@@ -65,4 +65,8 @@ ion-menu-button {
   width: 70vw;
   font-family: 'Oswald';
   font-weight: 200;
+
+  .content {
+    display: flex;
+  }
 }

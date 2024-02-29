@@ -1,0 +1,14 @@
+.btn-fab {
+  --border-color: var(--orange);
+  --color: var(--orange);
+  --border-width: 1px;
+  --border-style: solid;
+  --background: var(--dark);
+  width: var(--width);
+  height: var(--height);
+  margin-right: 4px;
+}
+
+.btn-fab ion-icon {
+  height: var(--icon-width);
+}

@@ -8,6 +8,8 @@ import { Card } from 'src/app/interfaces/card';
 })
 export class CardComponent implements OnInit {
   @Input() card!: Card;
+  @Input() isDisabled: boolean = false;
+  @Input() isSpecial: boolean = false;
 
   constructor() { }
 
@@ -15,7 +17,7 @@ export class CardComponent implements OnInit {
   }
 
   onClick(card: Card) {
-    console.log("card clicked: ", card);
+    console.log("Card clicked: ", card);
   }
 
 }

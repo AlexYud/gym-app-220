@@ -9,30 +9,29 @@ register();
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent implements OnInit {
-  personal = [
+  specialCards = [
     {
       id: 0,
       title: '',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
-      isDisabled: false,
     },
+  ]
+  personal = [
     {
-      id: 1,
+      id: 0,
       title: 'Yoga Express',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-yoga.jpg',
       imageAlt: 'yoga image',
-      isDisabled: false,
     },
     {
-      id: 3,
+      id: 1,
       title: 'Levantamento de peso',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
-      isDisabled: false,
     }
   ];
 
@@ -43,7 +42,6 @@ export class ContentComponent implements OnInit {
       subtitle: 'continuar treinando',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
-      isDisabled: false,
     },
     {
       id: 1,
@@ -51,7 +49,6 @@ export class ContentComponent implements OnInit {
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-yoga.jpg',
       imageAlt: 'yoga image',
-      isDisabled: false,
     },
     {
       id: 3,
@@ -59,7 +56,6 @@ export class ContentComponent implements OnInit {
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
-      isDisabled: false,
     }
   ];
 
@@ -70,7 +66,6 @@ export class ContentComponent implements OnInit {
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-content.jpg',
       imageAlt: 'empty content image',
-      isDisabled: true,
     },
     {
       id: 1,
@@ -78,7 +73,6 @@ export class ContentComponent implements OnInit {
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-content.jpg',
       imageAlt: 'empty content image',
-      isDisabled: true,
     }
   ];
 

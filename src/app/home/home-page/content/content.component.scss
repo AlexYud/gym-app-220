@@ -3,23 +3,12 @@
   color: var(--white);
 }
 
-ion-fab {
-  margin-left: 16px;
-  bottom: 5px;
-}
-
-.btn-add {
-  --border-color: var(--orange);
-  --color: var(--orange);
-  --border-width: 1px;
-  --border-style: solid;
-  --background: var(--dark);
-  width: 24px;
-  height: 24px;
-}
-
-.btn-add ion-icon {
-  height: 16px;
+.title-container {
+  display: flex;
+  align-items: center;
+  app-fab {
+    margin-left: 8px;
+  }
 }
 
 ion-badge {

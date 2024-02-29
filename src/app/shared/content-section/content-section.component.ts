@@ -7,7 +7,9 @@ import { Card } from 'src/app/interfaces/card';
   styleUrls: ['./content-section.component.scss'],
 })
 export class ContentSectionComponent  implements OnInit {
+  @Input() specialCards: Card[] = [];  
   @Input() cards: Card[] = []; 
+  @Input() isDisabled: boolean = false;
 
   constructor() { }
 
