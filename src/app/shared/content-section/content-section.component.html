@@ -5,7 +5,7 @@
   <swiper-container space-between="15" slides-per-view="auto" [slidesOffsetBefore]="30" [enabled]="!isDisabled">
     @for (card of specialCards; track $index) {
       <swiper-slide>
-        <app-card [card]="card" [isSpecial]="true"></app-card>
+        <app-special-card [card]="card"></app-special-card>
       </swiper-slide>
     }
     @for (card of cards; track $index) {

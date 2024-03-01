@@ -1,20 +1,7 @@
-.container {
-  position: absolute;
-  display: flex;
-  
-  ion-label {
-    color: var(--white);
-    font-size: 20px;
-    font-weight: 300;
-    font-family: 'Oswald';
-  }
-  
-}
-
 ion-card {
   margin: 0;
   border-radius: 16px;
-
+  
   img {
     height: 15vh;
     width: 60vw;

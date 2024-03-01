@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+
+  ion-label {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 200;
+    font-family: 'Oswald';
+    width: 50%;
+    line-height: 100%;
+    margin-left: 4px;
+  }
+}
+
+ion-card {
+  margin: 0;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  img {
+    height: 15vh;
+    width: 60vw;
+    filter: brightness(20%);
+    z-index: -1;
+  }
+}

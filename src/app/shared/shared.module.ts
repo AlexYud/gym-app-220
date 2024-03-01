@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ContentSectionComponent } from './content-section/content-section.component';
 import { CardComponent } from './card/card.component';
 import { FabComponent } from './fab/fab.component';
+import { SpecialCardComponent } from './special-card/special-card.component';
 
 
 
@@ -14,6 +15,7 @@ import { FabComponent } from './fab/fab.component';
     ContentSectionComponent,
     CardComponent,
     FabComponent,
+    SpecialCardComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { FabComponent } from './fab/fab.component';
     ContentSectionComponent,
     CardComponent,
     FabComponent,
+    SpecialCardComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

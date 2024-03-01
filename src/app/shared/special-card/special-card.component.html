@@ -2,12 +2,12 @@
   [style.border]="isDisabled ? 'solid 1px var(--lightgrey)': ''" 
   (click)="onClick(card)"
   >
+  <div class="container">
+    <app-fab iconName="add" iconWidth="20px" width="40px" height="40px"></app-fab>
+    <ion-label>NOVO TREINO</ion-label>
+  </div>
   <img 
     [alt]="card ? card.imageAlt : ''" 
     [src]="card ? card.imageURL : 'https://ionicframework.com/docs/img/demos/card-media.png'" 
     />
-  <ion-card-header>
-    <ion-card-subtitle>{{ card ? card.subtitle : '' }}</ion-card-subtitle>
-    <ion-card-title>{{ card ? card.title.toUpperCase() : '' }}</ion-card-title>
-  </ion-card-header>
 </ion-card>

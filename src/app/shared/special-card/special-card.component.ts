@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/interfaces/card';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-special-card',
+  templateUrl: './special-card.component.html',
+  styleUrls: ['./special-card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class SpecialCardComponent  implements OnInit {
   @Input() card!: Card;
   @Input() isDisabled: boolean = false;
 
