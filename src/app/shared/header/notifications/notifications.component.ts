@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { PushNotificationSchema } from '@capacitor/push-notifications';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -7,8 +9,9 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit {
-  @Input() notifications: any[] = [];
+  @Input() notifications: PushNotificationSchema[] = [];
   private menuCtrl = inject(MenuController);
+  private router = inject(Router);
 
   constructor() { }
 
@@ -18,9 +21,9 @@ export class NotificationsComponent implements OnInit {
     this.menuCtrl.close();
   }
 
-  onClick(notification: any) {
-    console.log("Notification clicked: ", notification);
-    
+  onClick(notification: PushNotificationSchema) {
+    this.router.navigate([`/home/${notification.data.detailsId}`]);
+    this.onClose();
   }
 
 }

@@ -1,4 +1,4 @@
-<ion-menu side="end" content-id="header" (ionDidOpen)="onOpenNotifications()">
+<ion-menu side="end" content-id="header" swipe-gesture="false" (ionDidOpen)="onOpenNotifications()">
   <app-notifications [notifications]="notifications"></app-notifications>
 </ion-menu>
 <ion-header class="ion-no-border" id="header">
@@ -27,7 +27,7 @@
       </ion-label>
     </section>
     <section class="navbar">
-      <ion-chip class="chip ion-justify-content-around">
+      <ion-chip class="chip ion-justify-content-around" (click)="onClickNavbar()">
         <div class="content">
           <app-fab iconName="accessibility" iconWidth="2vw" width="5vw" height="5vw"></app-fab>
           MEU CORPO

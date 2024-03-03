@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-label>
       <ion-button (click)="onClose()">
@@ -18,7 +18,7 @@
           <ion-card-title>{{ notification.title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-label>{{ notification.description }}</ion-label>
+          <ion-label>{{ notification.data.description }}</ion-label>
         </ion-card-content>
       </ion-card>
     }

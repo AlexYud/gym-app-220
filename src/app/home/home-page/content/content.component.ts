@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { SpecialCardModalComponent } from 'src/app/shared/special-card/special-card-modal/special-card-modal.component';
+import { Router } from '@angular/router';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -11,7 +10,7 @@ register();
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent implements OnInit {
-  private modalCtrl = inject(ModalController);
+  private router = inject(Router);
   specialCards = [
     {
       id: 0,
@@ -23,13 +22,6 @@ export class ContentComponent implements OnInit {
   ]
   personal = [
     {
-      id: 0,
-      title: 'Yoga Express',
-      subtitle: '',
-      imageURL: '../../../assets/jpg/bg-yoga.jpg',
-      imageAlt: 'yoga image',
-    },
-    {
       id: 1,
       title: 'Levantamento de peso',
       subtitle: '',
@@ -40,21 +32,21 @@ export class ContentComponent implements OnInit {
 
   programs = [
     {
-      id: 0,
+      id: 2,
       title: 'Levantamento de peso',
       subtitle: 'continuar treinando',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
     },
     {
-      id: 1,
+      id: 3,
       title: 'Yoga Express',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-yoga.jpg',
       imageAlt: 'yoga image',
     },
     {
-      id: 3,
+      id: 4,
       title: 'Levantamento de peso',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-workout.jpg',
@@ -64,14 +56,14 @@ export class ContentComponent implements OnInit {
 
   contents = [
     {
-      id: 0,
+      id: 5,
       title: '',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-content.jpg',
       imageAlt: 'empty content image',
     },
     {
-      id: 1,
+      id: 6,
       title: '',
       subtitle: '',
       imageURL: '../../../assets/jpg/bg-content.jpg',
@@ -84,16 +76,7 @@ export class ContentComponent implements OnInit {
   ngOnInit() { }
 
   async onClickAdd() {
-    const modal = await this.modalCtrl.create({
-      component: SpecialCardModalComponent,
-    });
-    modal.present();
-
-    const { data, role } = await modal.onWillDismiss();
-
-    if (role === 'confirm') {
-      console.log('special card comp :', data)
-    }
+    this.router.navigate([`/home/0`]);
   }
 
 }

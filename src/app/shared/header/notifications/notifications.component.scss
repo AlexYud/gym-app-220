@@ -22,8 +22,9 @@ ion-label {
 }
 
 ion-card {
-  margin-top: 1vh;
+  margin-top: 2vh;
   border: 1px solid var(--orange);
+  border-radius: 16px;
 
   ion-card-title {
     color: var(--orange);

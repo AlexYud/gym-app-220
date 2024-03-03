@@ -1,5 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
+import { PushNotificationSchema } from '@capacitor/push-notifications';
 import { MenuController } from '@ionic/angular';
 import { FirebaseCloudMessagingService } from 'src/app/services/firebase-cloud-messaging.service';
 
@@ -8,15 +10,27 @@ import { FirebaseCloudMessagingService } from 'src/app/services/firebase-cloud-m
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   private fcmService = inject(FirebaseCloudMessagingService);
   private menuCtrl = inject(MenuController);
-  public notifications: any[] = [];
+  private router = inject(Router);
+  private subscription = this.fcmService.getNotifications().subscribe({
+    next: (notifications: PushNotificationSchema[]) => this.notifications = notifications,
+  });
+  public notifications: PushNotificationSchema[] = this.fcmService.getAllNotifications();
   public hasOpenNotifications = false;
 
   constructor() { }
 
   ngOnInit() { }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  onClickNavbar() {
+    this.router.navigate(['/home']);
+  }
 
   async onClickNotifications() {
     if (Capacitor.getPlatform() !== 'web') await this.fcmService.init();
@@ -24,13 +38,12 @@ export class HeaderComponent implements OnInit {
   }
 
   hasUnreadNotifications() {
-    if (this.fcmService.getNotifications().length > 0 && !this.hasOpenNotifications) return true;
+    if (this.notifications.length > 0 && !this.hasOpenNotifications) return true;
     return false;
   }
 
   onOpenNotifications() {
     this.hasOpenNotifications = true;
-    this.notifications = this.fcmService.getNotifications();
   }
 
 }

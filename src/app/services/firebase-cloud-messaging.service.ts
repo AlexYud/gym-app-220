@@ -1,23 +1,40 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PushNotifications } from '@capacitor/push-notifications';
+import { PushNotificationSchema, PushNotifications } from '@capacitor/push-notifications';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseCloudMessagingService {
   private router = inject(Router);
-  private notifications = [
+  private notifications: BehaviorSubject<PushNotificationSchema[]> = new BehaviorSubject<PushNotificationSchema[]>([
     {
-      title: 'Confira o novo programa!',
-      description: 'Um novo programa foi adicionado. Não perca mais tempo e vá dar uma olhada!'
+      id: '0',
+      title: 'Continue seu treino!',
+      data: {
+        description: 'Vimos que você perdeu um dia, mas sem problemas! Não desanime! 💪',
+        detailsId: 2,
+      },
+    },
+    {
+      id: '1',
+      title: 'Sem tempo? Confira Yoga Express!',
+      data: {
+        description: 'Um novo programa foi adicionado. Não perca mais tempo e vá dar uma olhada!',
+        detailsId: 3,
+      },
     }
-  ];
+  ]);
 
   constructor() { }
 
   getNotifications() {
-    return this.notifications;
+    return this.notifications.asObservable();
+  }
+
+  getAllNotifications() {
+    return this.notifications.value;
   }
 
   async init() {
@@ -35,11 +52,11 @@ export class FirebaseCloudMessagingService {
     });
 
     await PushNotifications.addListener('pushNotificationReceived', notification => {
-      console.log('Push notification received: ', notification);
+      this.notifications.value.push(notification);
+      this.notifications.next(this.notifications.value);
     });
 
     await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-      console.log('Push notification action performed', notification.actionId, notification.inputValue);
       const data = notification.notification.data;
       if (data.detailsId) this.router.navigateByUrl(`/home/${data.detailsId}`);
     });
@@ -61,6 +78,5 @@ export class FirebaseCloudMessagingService {
 
   private async getDeliveredNotifications() {
     const notificationList = await PushNotifications.getDeliveredNotifications();
-    console.log('delivered notifications', notificationList);
   }
 }

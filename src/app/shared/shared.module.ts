@@ -6,9 +6,7 @@ import { ContentSectionComponent } from './content-section/content-section.compo
 import { CardComponent } from './card/card.component';
 import { FabComponent } from './fab/fab.component';
 import { SpecialCardComponent } from './special-card/special-card.component';
-import { SpecialCardModalComponent } from './special-card/special-card-modal/special-card-modal.component';
 import { NotificationsComponent } from './header/notifications/notifications.component';
-import { CardModalComponent } from './card/card-modal/card-modal.component';
 
 
 
@@ -17,10 +15,8 @@ import { CardModalComponent } from './card/card-modal/card-modal.component';
     HeaderComponent,
     ContentSectionComponent,
     CardComponent,
-    CardModalComponent,
     FabComponent,
     SpecialCardComponent,
-    SpecialCardModalComponent,
     NotificationsComponent,
   ],
   imports: [
