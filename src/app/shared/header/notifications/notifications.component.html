@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-label>
+      <ion-button (click)="onClose()">
+        <ion-icon slot="icon-only" name="arrow-undo"></ion-icon>
+      </ion-button>
+      Notificações
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+<div class="list">
+  @if (notifications.length === 0) {
+    <ion-title>Nenhuma notificação...</ion-title>
+  } @else {
+    @for (notification of notifications; track $index) {
+      <ion-card (click)="onClick(notification)">
+        <ion-card-header>
+          <ion-card-title>{{ notification.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>{{ notification.description }}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    }
+  }
+</div>

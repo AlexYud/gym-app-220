@@ -2,7 +2,7 @@
   <ion-title [style.color]="(isDisabled) ? 'var(--lightgrey)': ''">
     <ng-content select=[sectionTitle]></ng-content>
   </ion-title>
-  <swiper-container space-between="15" slides-per-view="auto" [slidesOffsetBefore]="30" [enabled]="!isDisabled">
+  <swiper-container space-between="15" slides-per-view="auto" [slidesOffsetBefore]="40" [enabled]="!isDisabled">
     @for (card of specialCards; track $index) {
       <swiper-slide>
         <app-special-card [card]="card"></app-special-card>

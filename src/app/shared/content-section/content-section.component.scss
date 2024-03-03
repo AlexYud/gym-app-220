@@ -1,13 +1,16 @@
 .container {
-  height: 20vh;
-  margin-top: 24px;
+  height: 18vh;
+  margin-top: 4vh;
 }
 
 ion-title {
-  font-size: 24px;
+  font-size: 3vh;
   font-weight: 400;
   padding: 0;
-  margin: 8px 32px;
+  margin: 1vh 10vw;
+  position: relative;
+  height: auto;
+  text-align: start;
 }
 
 swiper-container {

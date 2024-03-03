@@ -1,4 +1,7 @@
-<ion-header class="ion-no-border">
+<ion-menu side="end" content-id="header" (ionDidOpen)="onOpenNotifications()">
+  <app-notifications [notifications]="notifications"></app-notifications>
+</ion-menu>
+<ion-header class="ion-no-border" id="header">
   <div class="container">
     <section>
       <ion-toolbar class="ion-text-center">
@@ -7,9 +10,10 @@
         </ion-buttons>
         <img class="logo" src="../../../assets/jpg/logo.jpg" alt="logo">
         <ion-fab horizontal="end">
-          <ion-fab-button class="btn-notifications">
+          <ion-fab-button class="btn-notifications" (click)="onClickNotifications()">
             <ion-icon name="notifications"></ion-icon>
           </ion-fab-button>
+          @if (hasUnreadNotifications()) {<ion-badge>.</ion-badge>}
         </ion-fab>
       </ion-toolbar>
     </section>
@@ -25,11 +29,11 @@
     <section class="navbar">
       <ion-chip class="chip ion-justify-content-around">
         <div class="content">
-          <app-fab iconName="accessibility" iconWidth="10px" width="24px" height="24px"></app-fab>
+          <app-fab iconName="accessibility" iconWidth="2vw" width="5vw" height="5vw"></app-fab>
           MEU CORPO
         </div>
         <div class="content">
-          <app-fab iconName="trophy" iconWidth="10px" width="24px" height="24px"></app-fab>
+          <app-fab iconName="trophy" iconWidth="2vw" width="5vw" height="5vw"></app-fab>
           OBJETIVOS E CONQUISTAS
         </div>
       </ion-chip>

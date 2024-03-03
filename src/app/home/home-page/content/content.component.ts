@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { SpecialCardModalComponent } from 'src/app/shared/special-card/special-card-modal/special-card-modal.component';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -9,6 +11,7 @@ register();
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent implements OnInit {
+  private modalCtrl = inject(ModalController);
   specialCards = [
     {
       id: 0,
@@ -79,5 +82,18 @@ export class ContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  async onClickAdd() {
+    const modal = await this.modalCtrl.create({
+      component: SpecialCardModalComponent,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      console.log('special card comp :', data)
+    }
+  }
 
 }
