@@ -18,6 +18,6 @@ export class SpecialCardComponent  implements OnInit {
   }
 
   async onClick(card: Card) {
-    this.router.navigate([`/home/${card.id}`]);
+    this.router.navigate([`/home/${card.type}/${card.id}`]);
   }
 }

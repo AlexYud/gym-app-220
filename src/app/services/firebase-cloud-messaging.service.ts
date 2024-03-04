@@ -8,13 +8,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FirebaseCloudMessagingService {
   private router = inject(Router);
-  private notifications: BehaviorSubject<PushNotificationSchema[]> = new BehaviorSubject<PushNotificationSchema[]>([
+  private notifications$: BehaviorSubject<PushNotificationSchema[]> = new BehaviorSubject<PushNotificationSchema[]>([
     {
       id: '0',
       title: 'Continue seu treino!',
       data: {
         description: 'Vimos que você perdeu um dia, mas sem problemas! Não desanime! 💪',
-        detailsId: 2,
+        type: 'programs',
+        id: '0o4Mu1oyvHOGpvqI2IkM',
       },
     },
     {
@@ -22,7 +23,8 @@ export class FirebaseCloudMessagingService {
       title: 'Sem tempo? Confira Yoga Express!',
       data: {
         description: 'Um novo programa foi adicionado. Não perca mais tempo e vá dar uma olhada!',
-        detailsId: 3,
+        type: 'programs',
+        id: 'Pzys2SpUuLi9d3lW9zKz',
       },
     }
   ]);
@@ -30,11 +32,11 @@ export class FirebaseCloudMessagingService {
   constructor() { }
 
   getNotifications() {
-    return this.notifications.asObservable();
+    return this.notifications$.asObservable();
   }
 
   getAllNotifications() {
-    return this.notifications.value;
+    return this.notifications$.value;
   }
 
   async init() {
@@ -52,8 +54,8 @@ export class FirebaseCloudMessagingService {
     });
 
     await PushNotifications.addListener('pushNotificationReceived', notification => {
-      this.notifications.value.push(notification);
-      this.notifications.next(this.notifications.value);
+      this.notifications$.value.push(notification);
+      this.notifications$.next(this.notifications$.value);
     });
 
     await PushNotifications.addListener('pushNotificationActionPerformed', notification => {

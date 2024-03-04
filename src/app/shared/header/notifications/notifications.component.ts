@@ -22,7 +22,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   onClick(notification: PushNotificationSchema) {
-    this.router.navigate([`/home/${notification.data.detailsId}`]);
+    this.router.navigate([`/home/${notification.data.type}/${notification.data.id}`]);
     this.onClose();
   }
 

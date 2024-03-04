@@ -1,6 +1,7 @@
 <ion-card 
-  [style.border]="isDisabled ? 'solid 1px var(--lightgrey)': ''" 
+  [style.border]="isDisabled ? 'solid 1px var(--white)': ''" 
   (click)="onClick(card)"
+  [disabled]="isDisabled"
   >
   <img 
     [alt]="card ? card.imageAlt : ''" 

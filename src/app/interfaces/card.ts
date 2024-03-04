@@ -1,7 +1,9 @@
 export interface Card {
-  id: number,
+  id: string,
   title: string,
   subtitle: string,
   imageURL: string,
   imageAlt: string,
+  type: string,
+  items: string[],
 }

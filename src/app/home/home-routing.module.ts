@@ -12,12 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: ContentComponent,
-        data: { animation: 'enterLeavePage' }
       },
       {
-        path: ':id',
+        path: ':type/:id',
         component: CardPageComponent,
-        data: { animation: 'enterLeavePage' }
       }
     ]
   },

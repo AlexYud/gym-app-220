@@ -1,0 +1,51 @@
+.title-container {
+  display: flex;
+  align-items: center;
+  app-fab {
+    margin-left: 2vw;
+    color: var(--orange);
+  }
+}
+
+ion-card {
+  font-family: 'Oswald';
+  margin: 1vh 10vw;
+  height: 72vh;
+  overflow-y: auto;
+
+  ion-card-title {
+    --color: var(--white);
+    font-size: 3vh;
+  }
+  ion-card-subtitle {
+    --color: var(--orange);
+    font-size: 2vh;
+  }
+}
+
+ion-input {
+  --color: var(--white);
+  --highlight-color-focused: var(--orange);
+  --color: var(--white);
+  font-family: 'Oswald';
+  font-size: 2.5vh;
+  margin-left: 4vw;
+}
+
+ion-item-sliding {
+  margin-top: 2vh;
+}
+
+ion-item-option {
+  --background: var(--orange);
+}
+
+ion-item {
+  --color: var(--white);
+  font-family: 'Oswald';
+  font-size: 2.5vh;
+}
+
+ion-card-content {
+  padding: 0;
+}
