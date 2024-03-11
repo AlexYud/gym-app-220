@@ -1,6 +1,8 @@
 .title-container {
   display: flex;
   align-items: center;
+  margin-top: 2vh;
+
   app-fab {
     margin-left: 2vw;
     color: var(--orange);
@@ -13,37 +15,47 @@ ion-card {
   height: 72vh;
   overflow-y: auto;
 
+  ion-card-header {
+    padding: 0;
+  }
+
   ion-card-title {
     --color: var(--white);
     font-size: 3vh;
   }
+
   ion-card-subtitle {
     --color: var(--orange);
     font-size: 2vh;
   }
 }
 
-ion-input {
-  --color: var(--white);
-  --highlight-color-focused: var(--orange);
-  --color: var(--white);
-  font-family: 'Oswald';
-  font-size: 2.5vh;
-  margin-left: 4vw;
-}
-
-ion-item-sliding {
+ion-progress-bar {
+  --background: var(--orange);
+  --progress-background: var(--orange);
   margin-top: 2vh;
 }
 
-ion-item-option {
-  --background: var(--orange);
+ion-checkbox {
+  --size: 5vw;
+  --checkbox-background-checked: var(--orange);
+  width: 100%;
+  height: 10vh;
+
+  ion-label {
+    color: var(--white);
+    font-family: 'Oswald';
+    font-size: 2.5vh;
+
+    p {
+      font-size: 2vh;
+    }
+  }
 }
 
-ion-item {
-  --color: var(--white);
-  font-family: 'Oswald';
-  font-size: 2.5vh;
+ion-checkbox::part(container) {
+  border-radius: 40px;
+  border: 1px solid var(--orange);
 }
 
 ion-card-content {

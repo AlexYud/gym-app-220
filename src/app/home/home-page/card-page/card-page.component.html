@@ -16,25 +16,15 @@
     <ion-card-subtitle>{{ date | date: "dd/MM/yy '-' HH:mm" }}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
+    <ion-progress-bar [buffer]="progress" [value]="progress"></ion-progress-bar>
     <ion-list>
-      @for (item of card.items; track $index) {
-        <ion-item-sliding #slidingItem>
-          @if (edit === item) { 
-            <ion-input placeholder="Diga o nome do exercício" [value]="item" (ionChange)="onInput($index, $event)"></ion-input>
-          } @else {
-            <ion-item>{{ item }}</ion-item>
-          } 
-          @if (type === 'personal') {
-            <ion-item-options side="end">
-              <ion-item-option (click)="onEdit(item); slidingItem.close()">
-                <ion-icon slot="icon-only" name="pencil"></ion-icon>
-              </ion-item-option>
-              <ion-item-option color="danger" (click)="onDelete(item)">
-                <ion-icon slot="icon-only" name="trash"></ion-icon>
-              </ion-item-option>
-            </ion-item-options>
-          }
-        </ion-item-sliding>
+      @for (exercise of exercises; track $index) {
+        <ion-checkbox labelPlacement="start" [checked]="exercise.checked" (ionChange)="onCheckChange($event, exercise)">
+          <ion-label>
+            <h1>{{ exercise.title }}</h1>
+            <p>{{ exercise.description }}</p>
+          </ion-label>
+        </ion-checkbox>
       }
     </ion-list>
   </ion-card-content>
