@@ -5,5 +5,4 @@ export interface Card {
   imageURL: string,
   imageAlt: string,
   type: string,
-  items: string[],
 }

@@ -25,7 +25,6 @@ export class ContentComponent implements OnInit, OnDestroy {
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
       type: 'personal',
-      items: [],
     },
   ];
 
@@ -41,7 +40,6 @@ export class ContentComponent implements OnInit, OnDestroy {
       imageURL: '../../../assets/jpg/bg-content.jpg',
       imageAlt: 'empty content image',
       type: 'content',
-      items: [],
     },
     {
       id: '-1',
@@ -50,7 +48,6 @@ export class ContentComponent implements OnInit, OnDestroy {
       imageURL: '../../../assets/jpg/bg-content.jpg',
       imageAlt: 'empty content image',
       type: 'content',
-      items: [],
     }
   ];
 
@@ -71,11 +68,10 @@ export class ContentComponent implements OnInit, OnDestroy {
       imageURL: '../../../assets/jpg/bg-workout.jpg',
       imageAlt: 'workout image',
       type: 'personal',
-      items: [],
     };
-    await this.cfs.addCard(card);
-    const newCard = this.personal.find(card => card.items.length === 0);
-    this.router.navigate([`/home/${newCard!.type}/${newCard!.id}`]);
+    const newCard = await this.cfs.addCard(card);
+    console.log('newCard: ', newCard);
+    // this.router.navigate([`/home/${newCard!.type}/${newCard!.id}`]);
   }
 
 }

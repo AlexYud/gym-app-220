@@ -1,7 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, updateDoc } from '@angular/fire/firestore';
-import { Observable, debounce, debounceTime, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Card } from '../interfaces/card';
+import { Exercise } from '../interfaces/exercise';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,20 @@ export class CloudFirestoreService {
   firestore: Firestore = inject(Firestore);
 
   constructor() { }
+
+  getCardExercises(type: string, id: string): Observable<Exercise[]> {
+    const exercises = collection(this.firestore, `${type}/${id}/exercises`);
+    return collectionData(exercises, { idField: 'id' }) as Observable<Exercise[]>;
+  }
+
+  updateCardExercise(type: string, id: string, exercise: Exercise) {
+    const selectedExercise = doc(this.firestore, `${type}/${id}/exercises/${exercise.id}`);
+    return updateDoc(selectedExercise, {
+      title: exercise.title,
+      description: exercise.description,
+      checked: exercise.checked,
+    });
+  }
 
   getCards(type: string): Observable<Card[]> {
     const cards = collection(this.firestore, type);
@@ -44,7 +60,6 @@ export class CloudFirestoreService {
       subtitle: card.subtitle,
       imageURL: card.imageURL,
       imageAlt: card.imageAlt,
-      items: card.items,
     });
   }
 }

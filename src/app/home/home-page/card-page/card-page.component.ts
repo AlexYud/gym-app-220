@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from 'src/app/interfaces/card';
+import { Exercise } from 'src/app/interfaces/exercise';
 import { CloudFirestoreService } from 'src/app/services/cloud-firestore.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class CardPageComponent implements OnInit {
   private cfs = inject(CloudFirestoreService);
   type = this.route.snapshot.paramMap.get('type');
   date = new Date();
-  edit = '';
+  progress = 0;
   card: Card = {
     id: '',
     title: 'Título',
@@ -22,8 +23,8 @@ export class CardPageComponent implements OnInit {
     imageURL: '../../../assets/jpg/bg-workout.jpg',
     imageAlt: 'workout image',
     type: 'personal',
-    items: [],
   };
+  exercises: Exercise[] = [];
   public alertButtons = [
     {
       text: 'Confirmar',
@@ -46,26 +47,34 @@ export class CardPageComponent implements OnInit {
     this.route.params.subscribe(async params => {
       this.type = params['type'];
       this.cfs.getCardById(params['type'], params['id']).subscribe(card => this.card = card);
+      this.cfs.getCardExercises(params['type'], params['id']).subscribe(cardExercises => {
+        this.exercises = cardExercises;
+        this.updateProgressBar();
+
+      });
     });
   }
 
-  onEdit(item: string) {
-    this.edit = item;
+  onCheckChange(event: any, exercise: Exercise) {
+    this.exercises.map((_exercise: Exercise) => {
+      if (_exercise.id === exercise.id) this.updateExercise(_exercise, event.target.checked);
+    });
+    this.updateProgressBar();
   }
 
-  onInput(index: number, event: any) {
-    this.card.items[index] = event.target.value;
-    this.cfs.updateCard(this.type!, this.card);
+  updateProgressBar() {
+    var numberChecked = 0;
+    var totalItems = 0;
+    this.exercises.map((_exercise: Exercise) => {
+      if (_exercise.checked) numberChecked++;
+      totalItems++;
+    });
+    this.progress = numberChecked / totalItems;
   }
 
-  onClickAdd() {
-    this.card.items.push('Digite o nome do exercício');
-    this.edit = 'Digite o nome do exercício';
-  }
-
-  onDelete(item: string) {
-    this.card.items = this.card.items.filter(_item => _item !== item);
-    this.cfs.updateCard(this.type!, this.card);
+  updateExercise(_exercise: Exercise, checkValue: boolean) {
+    _exercise.checked = checkValue;
+    this.cfs.updateCardExercise(this.type!, this.card.id, _exercise);
   }
 
   onDeleteCard() {
