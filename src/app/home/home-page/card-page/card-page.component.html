@@ -8,10 +8,6 @@
         [buttons]="alertButtons"
         [inputs]="alertInputs"
       ></ion-alert>
-      @if (type === 'personal') {
-        <app-fab iconName="add" iconWidth="3vw" width="5vw" height="5vw" (click)="onClickAdd()"></app-fab>
-        <app-fab iconName="trash" iconWidth="2vw" width="5vw" height="5vw" (click)="onDeleteCard()"></app-fab>
-      }
     </div>
     <ion-card-subtitle>{{ date | date: "dd/MM/yy '-' HH:mm" }}</ion-card-subtitle>
   </ion-card-header>
