@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "apiKey",
-    authDomain: "authDomain",
-    projectId: "projectId",
-    storageBucket: "storageBucket",
-    messagingSenderId: "messagingSenderId",
-    appId: "appId",
-    measurementId: "measurementId"
+    apiKey: "APIKEY",
+    authDomain: "AUTHDOMAIN",
+    projectId: "PROJECTID",
+    storageBucket: "STORAGEBUECKET",
+    messagingSenderId: "MESSAGINGSENDERID",
+    appId: "APPID",
+    measurementId: "MEASUREMENTID"
   }
 };
 
