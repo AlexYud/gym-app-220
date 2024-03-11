@@ -40,7 +40,7 @@ First, make sure that the technologies are installed in the correct versions. Th
 npm install
 ```
 
-## 🛠️ Configuration
+## 🔧 Configuration
 
 Since we are using firebase, you need to create a new firebase project first and follow their instructions, specially for the Cloud Messaging configuration. After that, you just need to fill the environment.ts file with the correct data:
 <p align="center">
