@@ -16,9 +16,9 @@
 <br>
 
 <p align="center">
-  <img align="left" alt="Gym app home page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/b86a0043-8ce5-4d7b-92fd-73569749a366" width="30%">
-  <img align="center" alt="Gym app notification page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/97ae425c-0e5e-4d1c-bbb1-4bf7bfa4cb11" width="30%">
-  <img align="right" alt="Gym app workout page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/e1e43884-f362-4f49-9a70-ca52dd11c1cf" width="30%">
+  <img align="left" alt="Gym app home page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/b86a0043-8ce5-4d7b-92fd-73569749a366" width="25">
+  <img align="center" alt="Gym app notification page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/97ae425c-0e5e-4d1c-bbb1-4bf7bfa4cb11" width="25%">
+  <img align="right" alt="Gym app workout page" src="https://github.com/AlexYud/gym-app-220/assets/61790578/e1e43884-f362-4f49-9a70-ca52dd11c1cf" width="25%">
 </p>
 
 <hr>
