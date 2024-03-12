@@ -4,7 +4,6 @@ import { Observable, map } from 'rxjs';
 import { Card } from '../interfaces/card';
 import { Exercise } from '../interfaces/exercise';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,16 +30,16 @@ export class CloudFirestoreService {
     const cards = collection(this.firestore, type);
     return (collectionData(cards, { idField: 'id' }) as Observable<Card[]>).pipe(
       map(cards => {
-        return cards.map(card => {
-          return { ...card, type: type };
-        });
+        return cards.map(card => { return { ...card, type } });
       })
     );
   }
 
   getCardById(type: string, id: string): Observable<Card> {
     const card = doc(this.firestore, `${type}/${id}`);
-    return docData(card, { idField: 'id' }) as Observable<Card>;
+    return (docData(card, { idField: 'id' }) as Observable<Card>).pipe(
+      map(card => { return { ...card, type } })
+    );
   }
 
   addCard(card: Card) {
@@ -48,8 +47,8 @@ export class CloudFirestoreService {
     return addDoc(cards, card);
   }
 
-  deleteCard(card: Card) {
-    const selectedCard = doc(this.firestore, `personal/${card.id}`);
+  deleteCard(id: string) {
+    const selectedCard = doc(this.firestore, `personal/${id}`);
     return deleteDoc(selectedCard);
   }
 

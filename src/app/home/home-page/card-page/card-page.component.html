@@ -1,13 +1,7 @@
 <ion-card>
   <ion-card-header>
     <div class="title-container">
-      <ion-card-title id="present-alert">{{ card ? card.title : '' }}</ion-card-title>
-      <ion-alert
-        trigger="present-alert"
-        header="Insira o título desse treino"
-        [buttons]="alertButtons"
-        [inputs]="alertInputs"
-      ></ion-alert>
+      <ion-card-title>{{ card ? card.title : '' }}</ion-card-title>
     </div>
     <ion-card-subtitle>{{ date | date: "dd/MM/yy '-' HH:mm" }}</ion-card-subtitle>
   </ion-card-header>
@@ -15,7 +9,7 @@
     <ion-progress-bar [buffer]="progress" [value]="progress"></ion-progress-bar>
     <ion-list>
       @for (exercise of exercises; track $index) {
-        <ion-checkbox labelPlacement="start" [checked]="exercise.checked" (ionChange)="onCheckChange($event, exercise)">
+        <ion-checkbox text-wrap labelPlacement="start" [checked]="exercise.checked" (ionChange)="onCheckChange($event, exercise)">
           <ion-label>
             <h1>{{ exercise.title }}</h1>
             <p>{{ exercise.description }}</p>

@@ -13,7 +13,13 @@ export class CardPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private cfs = inject(CloudFirestoreService);
-  type = this.route.snapshot.paramMap.get('type');
+  private subscription = this.route.params.subscribe(async params => {
+    this.cfs.getCardById(params['type'], params['id']).subscribe(card => this.card = card);
+    this.cfs.getCardExercises(params['type'], params['id']).subscribe(cardExercises => {
+      this.exercises = cardExercises;
+      this.updateProgressBar();
+    });
+  });
   date = new Date();
   progress = 0;
   card: Card = {
@@ -25,41 +31,27 @@ export class CardPageComponent implements OnInit {
     type: 'personal',
   };
   exercises: Exercise[] = [];
-  public alertButtons = [
-    {
-      text: 'Confirmar',
-      handler: (alertData: any) => {
-        this.card.title = alertData[0];
-        this.cfs.updateCard(this.type!, this.card);
-      }
-    }
-  ];
-  public alertInputs = [
-    {
-      placeholder: 'Título',
-      value: this.card.title,
-    },
-  ];
 
   constructor() { }
 
   ngOnInit() {
-    this.route.params.subscribe(async params => {
-      this.type = params['type'];
-      this.cfs.getCardById(params['type'], params['id']).subscribe(card => this.card = card);
-      this.cfs.getCardExercises(params['type'], params['id']).subscribe(cardExercises => {
-        this.exercises = cardExercises;
-        this.updateProgressBar();
 
-      });
-    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onCheckChange(event: any, exercise: Exercise) {
-    this.exercises.map((_exercise: Exercise) => {
-      if (_exercise.id === exercise.id) this.updateExercise(_exercise, event.target.checked);
-    });
+    const _exercise = this.exercises.find(_exercise => _exercise.id === exercise.id);
+    if (_exercise) this.updateExercise(_exercise, event.target.checked);
     this.updateProgressBar();
+    this.updateCardStatus();
+  }
+
+  updateExercise(exercise: Exercise, checkValue: boolean) {
+    exercise.checked = checkValue;
+    this.cfs.updateCardExercise(this.card.type, this.card.id, exercise);
   }
 
   updateProgressBar() {
@@ -72,14 +64,22 @@ export class CardPageComponent implements OnInit {
     this.progress = numberChecked / totalItems;
   }
 
-  updateExercise(_exercise: Exercise, checkValue: boolean) {
-    _exercise.checked = checkValue;
-    this.cfs.updateCardExercise(this.type!, this.card.id, _exercise);
+  updateCardStatus() {
+    const someChecked = this.exercises.some(exercise => exercise.checked);
+    if (someChecked && this.card.subtitle === '') {
+      this.card.subtitle = 'continuar treinando';
+      return this.cfs.updateCard(this.card.type, this.card);
+    }
+    if (!someChecked && this.card.subtitle === 'continuar treinando') {
+      this.card.subtitle = '';
+      return this.cfs.updateCard(this.card.type, this.card);
+    }
+    return;
   }
 
   onDeleteCard() {
-    this.cfs.deleteCard(this.card);
-    this.router.navigate(['home/']);
+    this.cfs.deleteCard(this.card.id);
+    this.router.navigateByUrl('/home');
   }
 
 }
